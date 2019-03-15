@@ -10,6 +10,7 @@ bin/
 node_modules/
 *.jar
 !gradle-wrapper.jar
+
 #Fichiers idea #
 #################
 .idea/
@@ -36,6 +37,8 @@ node_modules/
 *.log.bz2
 *.~lock.*
 *.log.lck
+!src/test/resources/*.log
+!src/test/resources/logs/*.log
 
 # Gradle #
 ##########
