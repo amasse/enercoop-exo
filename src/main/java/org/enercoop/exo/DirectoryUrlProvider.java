@@ -13,7 +13,7 @@ public class DirectoryUrlProvider implements UrlProvider {
 
     private List<URL> content;
 
-    public DirectoryUrlProvider(Path directory) {
+    DirectoryUrlProvider(Path directory) {
         this.directory = directory;
     }
 

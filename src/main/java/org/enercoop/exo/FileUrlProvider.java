@@ -12,7 +12,7 @@ public class FileUrlProvider implements UrlProvider {
 
     private final Path file;
 
-    public FileUrlProvider(Path file) {
+    FileUrlProvider(Path file) {
         this.file = file;
     }
 

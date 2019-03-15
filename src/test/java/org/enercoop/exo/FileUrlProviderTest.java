@@ -14,7 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class FileUrlProviderTest {
 
     @Test
-    public void should_read_url_from_log_files() throws URISyntaxException {
+    public void should_read_url_from_log_file() throws URISyntaxException {
         Path file = Paths.get(ClassLoader.getSystemResource("test.log").toURI());
 
         FileUrlProvider provider = new FileUrlProvider(file);

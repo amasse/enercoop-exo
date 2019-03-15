@@ -28,7 +28,7 @@ public class IdCounterTest {
     }
 
     @Test
-    public void should_count_top_3_ids() {
+    public void should_properly_compute_rank() {
         // Given
         IdCounter.Builder builder = new IdCounter.Builder();
         UrlProvider provider = TestUtils.createProvider(
@@ -43,8 +43,6 @@ public class IdCounterTest {
                 "http://www.test.com?t=2&id=3",
                 "http://www.test.com?t=2&id=4",
                 "http://www.test.com?t=2&id=5"
-
-
         );
 
         // When
@@ -52,8 +50,17 @@ public class IdCounterTest {
         IdCounter counter = builder.build();
 
         // Then
-        List<Long> top = counter.getTop(3);
-        assertThat(top).containsExactly(1L, 3L, 2L);
+        List<RankedId> top = counter.getTop(4);
+
+        assertThat(top).containsExactly(
+                new RankedId(1, 4, 1L, false),
+                new RankedId(2, 3, 3L, false),
+                new RankedId(3, 2, 2L, false),
+                new RankedId(4, 1, 4L, true),
+                new RankedId(4, 1, 5L, true)
+        );
+
+
     }
 
 }

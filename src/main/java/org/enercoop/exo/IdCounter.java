@@ -1,6 +1,8 @@
 package org.enercoop.exo;
 
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.HashMultiset;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Multiset;
 
 import java.util.List;
@@ -12,10 +14,11 @@ import static java.util.Comparator.reverseOrder;
 
 public class IdCounter {
 
-    public static final String PARAM_ID = "id";
+    private static final String PARAM_ID = "id";
     private Multiset<Long> idCount = HashMultiset.create();
 
-    private IdCounter() {}
+    private IdCounter() {
+    }
 
     private void add(UrlProvider provider) {
         provider.provide().forEach(url ->
@@ -30,11 +33,34 @@ public class IdCounter {
         return idCount.count(id);
     }
 
-    public List<Long> getTop(int size) {
+    public List<RankedId> getTop(int size) {
+        return getRankedIds(getTopCount(size));
+
+    }
+
+    private List<RankedId> getRankedIds(List<Integer> topCount) {
         return idCount.entrySet().stream()
-                .sorted(comparing(Multiset.Entry::getCount, reverseOrder()))
+                .filter(entry -> topCount.contains(entry.getCount()))
+                .map(entry -> new RankedId(getRank(topCount, entry), entry.getCount(), entry.getElement(), isExAequo(entry.getCount())))
+                .sorted(comparing(RankedId::getRank).thenComparing(RankedId::getId))
+                .collect(Collectors.toList());
+
+    }
+
+    private int getRank(List<Integer> topCount, Multiset.Entry<Long> entry) {
+        return topCount.indexOf(entry.getCount()) + 1;
+    }
+
+    private boolean isExAequo(int count) {
+        return idCount.entrySet().stream().filter(entry -> entry.getCount() == count).count() > 1;
+    }
+
+    private List<Integer> getTopCount(int size) {
+        return idCount.entrySet().stream()
+                .map(Multiset.Entry::getCount)
+                .distinct()
+                .sorted(reverseOrder())
                 .limit(size)
-                .map(Multiset.Entry::getElement)
                 .collect(Collectors.toList());
     }
 
