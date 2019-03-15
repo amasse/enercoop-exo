@@ -1,0 +1,20 @@
+plugins {
+    id 'java'
+}
+
+group 'org.enercoop.exo'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 11
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'com.google.guava:guava:27.1-jre'
+    compile 'org.apache.httpcomponents:httpclient:4.5.7'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile group: 'org.assertj', name: 'assertj-core', version: '3.12.1'
+
+}

@@ -1,0 +1,53 @@
+target/
+build/
+classes/
+out/
+lib/
+test-output/
+infinitest.filters
+sass-css/
+bin/
+node_modules/
+*.jar
+
+#Fichiers idea #
+#################
+.idea/
+*.iml
+*.ipr
+*.iws
+*.ids
+
+# Fichiers eclipse #
+####################
+*.prefs
+.classpath
+.project
+
+# OS junk files #
+#################
+[Tt]humbs.db
+*.DS_Store
+*.db
+*.log
+*.log.zip
+*.log.gz
+*.log.tgz
+*.log.bz2
+*.~lock.*
+*.log.lck
+
+# Gradle #
+##########
+.gradle
+
+# Sass #
+########
+.jruby/
+.sass-cache/
+
+# JEnv #
+########
+.java-options
+.java-version
+
