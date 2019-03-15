@@ -8,6 +8,9 @@ import java.nio.file.Path;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Read a single file to transform the content to an URL list
+ */
 public class FileUrlProvider implements UrlProvider {
 
     private final Path file;

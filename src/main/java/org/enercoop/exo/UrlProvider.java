@@ -4,7 +4,9 @@ import java.net.URL;
 import java.nio.file.Path;
 import java.util.List;
 
-
+/**
+ * Provides a list of URL
+ */
 public interface UrlProvider {
 
     List<URL> provide();

@@ -2,6 +2,9 @@ package org.enercoop.exo;
 
 import java.util.Objects;
 
+/**
+ * The result bean, describing a ranked id
+ */
 public class RankedId {
 
     private int rank;

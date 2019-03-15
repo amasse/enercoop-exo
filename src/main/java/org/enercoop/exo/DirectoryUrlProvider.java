@@ -7,6 +7,9 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Provides all URL contained in files of a directory
+ */
 public class DirectoryUrlProvider implements UrlProvider {
 
     private final Path directory;

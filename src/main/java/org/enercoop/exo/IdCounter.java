@@ -1,8 +1,6 @@
 package org.enercoop.exo;
 
-import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.HashMultiset;
-import com.google.common.collect.Lists;
 import com.google.common.collect.Multiset;
 
 import java.util.List;
@@ -12,6 +10,9 @@ import java.util.stream.Stream;
 import static java.util.Comparator.comparing;
 import static java.util.Comparator.reverseOrder;
 
+/**
+ * The class responsible for counting all ids in a list of URL
+ */
 public class IdCounter {
 
     private static final String PARAM_ID = "id";
