@@ -9,7 +9,7 @@ sass-css/
 bin/
 node_modules/
 *.jar
-
+!gradle-wrapper.jar
 #Fichiers idea #
 #################
 .idea/
